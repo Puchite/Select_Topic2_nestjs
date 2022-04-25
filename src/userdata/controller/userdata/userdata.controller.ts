@@ -17,4 +17,6 @@ export class UserdataController {
   loadAll(): Promise<UserdataDto[]> {
     return this.userdataService.loadAllS();
   }
+
+
 }

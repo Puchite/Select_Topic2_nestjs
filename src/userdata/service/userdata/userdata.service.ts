@@ -14,4 +14,6 @@ export class UserdataService {
   loadAllS(): Promise<UserdataDto[]> {
     return this.userdataRepository.query('select * from Userdata');
   }
+
+
 }
