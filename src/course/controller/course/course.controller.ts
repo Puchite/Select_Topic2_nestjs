@@ -10,12 +10,18 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { UserdataService } from 'src/userdata/service/userdata/userdata.service';
+
 @Controller('course')
 export class CourseController {
   constructor(private CourseService: CourseService) {}
+
   @Get()
-  loadAll(): Promise<CourseDto[]> {
-    return this.CourseService.loadAllS();
+  Load_Course(): Promise<CourseDto[]> {
+    return this.CourseService.Load_Course();
+  }
+
+  @Get(':Course_ID')
+  Load_Course_ID(@Param('Course_ID') Course_ID: string): Promise<CourseDto[]> {
+    return this.CourseService.Load_Course_ID(Course_ID);
   }
 }
