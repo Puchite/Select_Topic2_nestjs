@@ -7,11 +7,19 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class RegisterService {
   public Register: RegisterDto[] = [];
+
   constructor(
     @InjectRepository(RegisterEntity)
     private RegisterRepository: Repository<RegisterEntity>,
   ) {}
-  loadAllS(): Promise<RegisterDto[]> {
+
+  Load_Register(): Promise<RegisterDto[]> {
     return this.RegisterRepository.query('select * from Register');
+  }
+
+  Load_Register_Course_ID(Course_ID: string): Promise<RegisterDto[]> {
+    return this.RegisterRepository.query(
+      'SELECT * FROM Register WHERE COURSE_ID="' + Course_ID + '"',
+    );
   }
 }
