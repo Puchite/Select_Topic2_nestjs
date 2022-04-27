@@ -22,8 +22,11 @@ export class UserdataController {
   }
 
   @Get(':Student_ID/:Password')
-  Load_UserData_Student_ID(@Param('Student_ID') Student_ID: string, @Param('Password') Password: string ): any {
+  Load_UserData_Student_ID(@Param('Student_ID') Student_ID: string, @Param('Password') Password: string ): Promise<UserdataDto[]> {
     return this.userdataService.Load_UserData_Student_ID(Student_ID, Password);
   }
+
+
+
 
 }
