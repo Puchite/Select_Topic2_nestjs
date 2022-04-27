@@ -19,13 +19,17 @@ export class UserdataService {
     return this.userdataRepository.query('SELECT * FROM Userdata');
   }
 
-  Load_UserData_Student_ID(Student_ID: string, Password: string): Promise<UserdataDto[]> {
-    this.userdataRepository.query('SELECT * FROM Userdata WHERE (Student_ID="'+Student_ID+'" AND Password="'+Password+'")').then(data => {
-      if(data.length != 0)
-      {
-        console.log(data);
-      }
-    })
-    return this.userdataRepository.query('SELECT * FROM Userdata WHERE (Student_ID="'+Student_ID+'" AND Password="'+Password+'")');
+  async Load_UserData_Student_ID(Student_ID: string, Password: string): Promise<any> {
+    const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID} AND Userdata.Password == ${Password}`)
+    
+    if(Object.keys(user).length != 0)
+    {
+      return user;
+    }
+
+    return false;
   }
+
+
+
 }
