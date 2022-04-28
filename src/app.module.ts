@@ -21,6 +21,7 @@ import { UserdataEntity } from './userdata/entity/userdata.entity';
     UserdataModule,
     CourseModule,
     RegisterModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],
