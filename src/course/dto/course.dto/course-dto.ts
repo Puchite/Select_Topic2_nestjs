@@ -9,4 +9,10 @@ export class CourseDto {
 
   @IsNumber()
   Course_Credit: number;
+
+  @IsNumber()
+  Semester: number;
+
+  @IsString()
+  Instructor_ID: string;
 }
