@@ -21,4 +21,8 @@ export class CourseService {
   Load_Course_ID(Course_ID: string): Promise<CourseDto[]> {
     return this.CourseRepository.query('SELECT * FROM Course WHERE Course_ID="'+Course_ID+'"');
   }
+
+  Load_Course_Semester(Years: number, Semester: number): Promise<CourseDto[]> {
+    return this.CourseRepository.query('SELECT * FROM Course WHERE Semester='+Semester+' AND Years='+Years);
+  }
 }
