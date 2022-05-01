@@ -29,7 +29,7 @@ export class HistoryService {
 
     Load_AllData() : Promise<HistoryDto[]> {
         return this.HistoryRepository.query(`
-            SELECT Register.Course_ID, History.*, Instructor.Name FROM History
+            SELECT Register.Course_ID, History.*, Register.Student_ID, Instructor.Name FROM History
             JOIN Register, Course, Instructor
             WHERE Course.Course_ID = Register.Course_ID AND 
             Instructor.Instructor_ID = Course.Instructor_ID AND 
