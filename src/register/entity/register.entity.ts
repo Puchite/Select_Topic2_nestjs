@@ -2,9 +2,9 @@ import { PrimaryColumn } from 'typeorm';
 
 export class RegisterEntity {
   @PrimaryColumn()
-  Course_ID: string;
+  Register_ID: string;
   @PrimaryColumn()
   Student_ID: string;
   @PrimaryColumn()
-  Year: number;
+  Course_ID: string;
 }

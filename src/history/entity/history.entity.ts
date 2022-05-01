@@ -4,8 +4,14 @@ import { PrimaryColumn } from "typeorm";
 
 export class HistoryEntity {
     @PrimaryColumn()
-    History_ID: number;
+    History_ID: string;
     
     @Column()
     Grade: number;
+
+    @Column()
+    Student_ID: string;
+
+    @Column()
+    Course_ID: string;
 }

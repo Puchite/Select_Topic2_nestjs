@@ -1,10 +1,16 @@
 /* eslint-disable prettier/prettier */
-import { IsNumber } from "class-validator";
+import { IsNumber,IsString } from "class-validator";
 
 export class HistoryDto {
-    @IsNumber()
-    History_ID: number;
+    @IsString()
+    History_ID: string;
     
     @IsNumber()
     Grade: number;
+
+    @IsString()
+    Student_ID: string;
+
+    @IsString()
+    Course_ID: string;
 }
