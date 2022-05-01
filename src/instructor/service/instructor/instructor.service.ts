@@ -36,9 +36,4 @@ export class InstructorService {
         return false;
     }
 
-    // Load_Instructor_Account(Instructor_ID: string): Promise<InstructorDto[]> {
-    //     console.log(Instructor_ID);
-    //     return this.InstructorRepository.query(
-    //         'SELECT * FROM Instructor WHERE Instructor.Instructor_ID="'+Instructor_ID+'"')
-    // }
 }

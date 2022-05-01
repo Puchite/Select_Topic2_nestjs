@@ -22,8 +22,4 @@ export class InstructorController {
         return this.InstructorService.Load_Instructor_Account(Instructor_ID, Password);
     }
 
-    // @Get(':Instructor_ID')
-    // Load_Instructor_Account(@Param('Instructor_ID') Instructor_ID: string): Promise<InstructorDto[]> {
-    //     return this.InstructorService.Load_Instructor_Account(Instructor_ID);
-    // }
 }
