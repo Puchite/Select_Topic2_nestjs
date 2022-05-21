@@ -24,4 +24,15 @@ export class RegisterController {
   Load_Register_Course_ID(@Param('Course_ID') Course_ID: string): Promise<RegisterDto[]> {
     return this.registerService.Load_Register_Course_ID(Course_ID);
   }
+
+  @Get(':Student_ID/:Course_ID')
+  CheckRegister(@Param('Student_ID') Student_ID: string, 
+              @Param('Course_ID') Course_ID: string) {
+      return this.registerService.CheckRegister(Student_ID, Course_ID);
+  }
+
+  @Post()
+  InsertData(@Body() Register: RegisterDto) : Promise<RegisterDto[]>{
+    return this.registerService.InsertData(Register);
+  }
 }

@@ -4,7 +4,6 @@ import { CourseDto } from './../../dto/course.dto/course-dto';
 import { Controller } from '@nestjs/common';
 import {
   Body,
-  // Controller,
   Delete,
   Get,
   Param,
@@ -26,8 +25,9 @@ export class CourseController {
     return this.CourseService.Load_Course_ID(Course_ID);
   }
 
-  @Get(':Years/:Semester')
-  Load_Course_Semester(@Param('Semester') Semester: number, @Param('Years') Years: number ): Promise<CourseDto[]> {
-    return this.CourseService.Load_Course_Semester(Years, Semester);
+  @Get(':Student_ID/:Semester')
+  Load_Course_Semester(@Param('Student_ID') Student_ID: string,@Param('Semester') Semester: number): Promise<CourseDto[]> {
+    return this.CourseService.Load_Course_Semester(Student_ID, Semester);
   }
+
 }

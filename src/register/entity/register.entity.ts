@@ -1,10 +1,18 @@
-import { PrimaryColumn } from 'typeorm';
+import { PrimaryColumn, Column } from 'typeorm';
 
 export class RegisterEntity {
   @PrimaryColumn()
-  Course_ID: string;
-  @PrimaryColumn()
   Student_ID: string;
+
   @PrimaryColumn()
-  Year: number;
+  Course_ID: string;
+
+  @Column()
+  Section: number;
+
+  @PrimaryColumn()
+  Year: string;
+
+  @Column()
+  Grade: number;
 }

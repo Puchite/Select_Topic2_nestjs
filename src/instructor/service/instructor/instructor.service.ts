@@ -35,5 +35,22 @@ export class InstructorService {
 
         return false;
     }
+    
+    Load_Instructor_Specific_Course(Instructor_ID: string, Course_ID: string): Promise<InstructorDto[]> {
+        return this.InstructorRepository.query(`SELECT Instructor.Instructor_ID, Course.Course_Name, Course.Section 
+                                                FROM Course
+                                                JOIN Instructor
+                                                WHERE Instructor.Instructor_ID == "${Instructor_ID}"
+                                                AND Instructor.Instructor_ID == Course.Instructor_ID
+                                                AND Course.Course_ID == "${Course_ID}"`);
+    }
 
+    Load_Instructor_All_Course(Instructor_ID: string, Password: string): Promise<InstructorDto[]> {
+        return this.InstructorRepository.query(`SELECT Instructor.Instructor_ID, Course.Course_ID, Course.Course_Name, Course.Section 
+                                                FROM Course
+                                                JOIN Instructor
+                                                WHERE Instructor.Instructor_ID == "${Instructor_ID}"
+                                                AND Instructor.Password == "${Password}"
+                                                AND Instructor.Instructor_ID == Course.Instructor_ID`);
+    }
 }

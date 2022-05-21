@@ -9,11 +9,17 @@ export class CourseEntity {
   Course_Name: string;
 
   @Column({ nullable: false })
-  Course_Credit: number;
-
-  @Column({ nullable: false })
   Semester: number;
 
   @Column({ nullable: false })
+  Years: number;
+
+  @Column({ nullable: false })
   Instructor_ID: string;
+
+  @Column({ nullable: false })
+  Previous_Subject: string;
+
+  @Column({ nullable: false })
+  Section: number;
 }

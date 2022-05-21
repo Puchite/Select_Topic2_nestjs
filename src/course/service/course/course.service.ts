@@ -22,7 +22,9 @@ export class CourseService {
     return this.CourseRepository.query('SELECT * FROM Course WHERE Course_ID="'+Course_ID+'"');
   }
 
-  Load_Course_Semester(Years: number, Semester: number): Promise<CourseDto[]> {
-    return this.CourseRepository.query('SELECT * FROM Course WHERE Semester='+Semester+' AND Years='+Years);
+  Load_Course_Semester(Student_ID: string, Semester: number): Promise<CourseDto[]> {
+    return this.CourseRepository.query(`SELECT Course.Course_ID, Course.Course_Name, UserData.Name FROM Course 
+                                        JOIN UserData 
+                                        WHERE Student_ID="`+Student_ID+'"AND Course.Semester='+Semester+' AND Course.Years=UserData.Years');
   }
 }

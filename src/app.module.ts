@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-import { HistoryEntity } from './history/entity/history.entity';
 import { InstructorEntity } from './instructor/entity/instructor.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -12,21 +11,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserdataModule } from './userdata/userdata.module';
 import { UserdataEntity } from './userdata/entity/userdata.entity';
 import { InstructorModule } from './instructor/instructor.module';
-import { HistoryModule } from './history/history.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: './db/CS_Student.db',
-      entities: [UserdataEntity, CourseEntity, RegisterEntity, InstructorEntity, HistoryEntity],
+      entities: [UserdataEntity, CourseEntity, RegisterEntity, InstructorEntity],
       synchronize: true,
     }),
     UserdataModule,
     CourseModule,
     RegisterModule,
     InstructorModule,
-    HistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
