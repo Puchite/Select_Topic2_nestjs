@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { PrimaryColumn, Column } from 'typeorm';
 
 export class RegisterEntity {

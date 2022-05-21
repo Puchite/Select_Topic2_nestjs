@@ -110,5 +110,5 @@ export class RegisterService {
     {
         return true;
     }
-}
+  }
 }
