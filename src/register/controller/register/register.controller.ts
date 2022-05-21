@@ -35,4 +35,24 @@ export class RegisterController {
   InsertData(@Body() Register: RegisterDto) : Promise<RegisterDto[]>{
     return this.registerService.InsertData(Register);
   }
+
+  @Get('/GradeSummary/All/:Student_ID')
+  GradeSummary(@Param('Student_ID') Student_ID: string) {
+      console.log(Student_ID);
+      return this.registerService.GradeSummary(Student_ID);
+  }
+
+  @Get('/RegisterResult/:Student_ID/:Years/:Semester')
+  RegisterResult(@Param('Student_ID') Student_ID: string, 
+         @Param('Years') Years: string,
+         @Param('Semester') Semester: number) {
+      return this.registerService.RegisterResult(Student_ID, Years, Semester);
+  }
+
+  @Get('/GradeSummary/Specific/:Student_ID/:Years/:Semester')
+  GradeSummarySpecific(@Param('Student_ID') Student_ID: string, 
+         @Param('Years') Years: string,
+         @Param('Semester') Semester: number) {
+      return this.registerService.GradeSummarySpecific(Student_ID, Years, Semester);
+  }
 }

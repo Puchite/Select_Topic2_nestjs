@@ -15,5 +15,8 @@ export class RegisterDto {
   Year: string;
 
   @IsNumber()
+  Semester: number;
+
+  @IsNumber()
   Grade: number;
 }
