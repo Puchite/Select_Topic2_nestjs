@@ -8,11 +8,17 @@ export class CourseDto {
   Course_Name: string;
 
   @IsNumber()
-  Course_Credit: number;
+  Semester: number;
 
   @IsNumber()
-  Semester: number;
+  Years: number;
 
   @IsString()
   Instructor_ID: string;
+
+  @IsString()
+  Previous_Subject: string;
+
+  @IsNumber()
+  Section: number;
 }
