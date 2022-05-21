@@ -111,4 +111,31 @@ export class RegisterService {
         return true;
     }
   }
+  // Get Register Result
+  RegisterResult(Student_ID: string, Year: string, Semester: number) {
+    return this.RegisterRepository.query(`SELECT DISTINCT Register.Course_ID, Course.Course_Name, Register.Section FROM Register 
+                                    JOIN Course
+                                    WHERE Register.Student_ID == "${Student_ID}"
+                                    AND Register.Year == "${Year}"
+                                    AND Register.Semester == ${Semester}
+                                    AND Course.Course_ID == Register.Course_ID`);
+  }
+
+  // Get Grade and Register Result with Specific Years and Semester
+  GradeSummarySpecific(Student_ID: string, Year: string, Semester: number) {
+    return this.RegisterRepository.query(`SELECT DISTINCT Register.Course_ID, Course.Course_Name, Register.Section, Register.Grade FROM Register 
+                                    JOIN Course
+                                    WHERE Register.Student_ID == "${Student_ID}"
+                                    AND Register.Year == "${Year}"
+                                    AND Register.Semester == ${Semester}
+                                    AND Course.Course_ID == Register.Course_ID`);
+  }
+
+  // Get Grade and Register Result 
+  GradeSummary(Student_ID: string) {
+    return this.RegisterRepository.query(`SELECT DISTINCT Register.Course_ID, Course.Course_Name, Register.Section, Register.Grade FROM Register 
+                                    JOIN Course
+                                    WHERE Register.Student_ID == "${Student_ID}"
+                                    AND Course.Course_ID == Register.Course_ID`);
+  }
 }

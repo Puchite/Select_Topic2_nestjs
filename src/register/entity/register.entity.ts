@@ -15,5 +15,8 @@ export class RegisterEntity {
   Year: string;
 
   @Column()
+  Semester: number;
+
+  @Column()
   Grade: number;
 }
