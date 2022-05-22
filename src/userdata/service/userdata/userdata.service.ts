@@ -33,15 +33,23 @@ export class UserdataService {
     
     return false;
   }
-  async fineOne(Student_ID:any): Promise<any>{
-    const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID}`)
-    return user
+
+  async fineOne(Student_ID:any,Password: string): Promise<any>{
+    const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID} AND Userdata.Password == ${Password}`)
+    
+    if(Object.keys(user).length != 0)
+    {
+      return user;
+    }
+    
+    return false;
+  }
     // return await this.userdataRepository.findOne(Student_ID)
   }
 
-  async Check(connition:any): Promise<any>{
-    // const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID}`)
-    // return user
-    return await this.userdataRepository.findOne(connition)
-  }
-}
+  // async Check(connition:any): Promise<any>{
+  //   // const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID}`)
+  //   // return user
+  //   return await this.userdataRepository.findOne(connition)
+  // }
+

@@ -37,13 +37,13 @@ export class UserdataController {
     return this.userdataService.Load_UserData_Student_ID(Student_ID, Password);
   }
 
-  @Post('login')
+  @Get('login/:Student_ID/:Password')
   async login(
-    @Body('Student_ID') Student_ID: string,
-    @Body('Password') Password: string,
+    @Param('Student_ID') Student_ID: string,
+    @Param('Password') Password: string,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const user = await this.userdataService.fineOne(Student_ID);
+    const user = await this.userdataService.fineOne(Student_ID,Password);
 
     if (!user) {
       throw new BadRequestException('Invalid Student_ID');
