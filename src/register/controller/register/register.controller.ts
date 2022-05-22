@@ -33,6 +33,7 @@ export class RegisterController {
 
   @Post()
   InsertData(@Body() Register: RegisterDto) : Promise<RegisterDto[]>{
+    console.log(Register);
     return this.registerService.InsertData(Register);
   }
 

@@ -26,18 +26,17 @@ export class RegisterService {
 
   async InsertData(Register: RegisterDto): Promise<RegisterDto[]> {
     console.log(Register.Course_ID.length);
-    for(let i = 0; i < Register.Course_ID.length; i++)
-    {
-      await this.RegisterRepository.query(`INSERT INTO Register VALUES 
+    await this.RegisterRepository.query(`INSERT INTO Register VALUES 
                                     (
                                       "${Register.Student_ID}", 
-                                      "${Register.Course_ID[i]}", 
-                                      ${Register.Section[i]}, 
+                                      "${Register.Course_ID}", 
+                                      ${Register.Section}, 
                                       "${Register.Year}",
+                                      ${Register.Semester},
                                       ${Register.Grade}
                                     )`)
-    }
-    return
+                                    
+    return this.RegisterRepository.query(`SELECT * FROM Register`);
   }
 
   async CheckRegister(Student_ID, Course_ID) {
