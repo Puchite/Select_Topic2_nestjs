@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller } from '@nestjs/common';
+import { Controller, Patch } from '@nestjs/common';
 import { RegisterDto } from 'src/register/dto/register.dto/register-dto';
 import { RegisterService } from 'src/register/service/register/register.service';
 import {
@@ -63,4 +63,12 @@ export class RegisterController {
         @Param('Year') Year: string) {
       return this.registerService.GetDataBySpecificSection(Year, Course_ID, Section);
   }
+
+  @Delete('/Drop/:Student_ID/:Year/:Course_ID')
+  DropCourse(@Param('Student_ID') Student_ID: string,
+          @Param('Year') Year: string,
+          @Param('Course_ID') Course_ID: string) {
+      return this.registerService.DropCourse(Student_ID, Year, Course_ID);
+  }
+
 }

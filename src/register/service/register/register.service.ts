@@ -146,6 +146,15 @@ export class RegisterService {
                                           AND Register.Student_ID == UserData.Student_ID
                                           AND Register.Section == Course.Section
                                           AND Course.Section == ${Section}
-                                          AND Course.Course_ID == Register.Course_ID`)
+                                          AND Course.Course_ID == Register.Course_ID`);
   }
+
+  DropCourse(Student_ID, Year, Course_ID) {
+    return this.RegisterRepository.query(`DELETE FROM Register
+                                          WHERE Register.Student_ID == "${Student_ID}"
+                                          AND Register.Year == "${Year}"
+                                          AND Register.Course_ID == "${Course_ID}"`);
+  }
+
+ 
 }
