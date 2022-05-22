@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { CourseService } from './../../service/course/course.service';
 import { CourseDto } from './../../dto/course.dto/course-dto';
-import { Controller } from '@nestjs/common';
+import { Controller, Patch } from '@nestjs/common';
 import {
   Body,
   Delete,
@@ -29,5 +29,10 @@ export class CourseController {
   Load_Course_Semester(@Param('Student_ID') Student_ID: string,@Param('Semester') Semester: number): Promise<CourseDto[]> {
     return this.CourseService.Load_Course_Semester(Student_ID, Semester);
   }
-
+  
+  @Patch('/ChangeData/Course/:Course_ID/:Course_Name/')
+  ChangeData(@Param('Course_ID') Course_ID: string,
+        @Param('Course_Name') Course_Name: string) {
+          return this.CourseService.ChangeData(Course_ID, Course_Name);
+  }
 }

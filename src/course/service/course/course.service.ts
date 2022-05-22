@@ -27,4 +27,10 @@ export class CourseService {
                                         JOIN UserData 
                                         WHERE Student_ID="`+Student_ID+'"AND Course.Semester='+Semester+' AND Course.Years=UserData.Years');
   }
+
+  ChangeData(Course_ID, Course_Name) {
+    return this.CourseRepository.query(`UPDATE Course 
+                                      SET Course_Name = '${Course_Name}'
+                                      WHERE Course_ID == '${Course_ID}'`);
+  }
 }
