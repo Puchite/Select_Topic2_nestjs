@@ -55,4 +55,11 @@ export class RegisterController {
          @Param('Semester') Semester: number) {
       return this.registerService.GradeSummarySpecific(Student_ID, Years, Semester);
   }
+
+  @Get('/Student/Course/Sec/:Year/:Course_ID/:Section')
+  GetDataBySpecificSection(@Param('Course_ID') Course_ID: string,
+        @Param('Section') Section: number,
+        @Param('Year') Year: string) {
+      return this.registerService.GetDataBySpecificSection(Year, Course_ID, Section);
+  }
 }

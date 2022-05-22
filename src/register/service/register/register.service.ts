@@ -138,4 +138,15 @@ export class RegisterService {
                                     WHERE Register.Student_ID == "${Student_ID}"
                                     AND Course.Course_ID == Register.Course_ID`);
   }
+
+  GetDataBySpecificSection(Year, Course_ID, Section) {
+    return this.RegisterRepository.query(`SELECT DISTINCT Course.Course_Name, Course.Section, UserData.Student_ID, UserData.Name, UserData.Surname FROM Course 
+                                          JOIN UserData, Register
+                                          WHERE Register.Course_ID == "${Course_ID}"
+                                          AND Register.Year == "${Year}"
+                                          AND Register.Student_ID == UserData.Student_ID
+                                          AND Register.Section == Course.Section
+                                          AND Course.Section == ${Section}
+                                          AND Course.Course_ID == Register.Course_ID`)
+  }
 }
