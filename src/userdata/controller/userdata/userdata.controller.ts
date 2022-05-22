@@ -42,7 +42,7 @@ export class UserdataController {
     @Param('Student_ID') Student_ID: string,
     @Param('Password') Password: string,
     @Res({ passthrough: true }) response: Response,
-  ) {
+  ): Promise<UserdataDto[]>{
     const user = await this.userdataService.fineOne(Student_ID,Password);
 
     if (!user) {
@@ -50,9 +50,8 @@ export class UserdataController {
     }
     const jwt = await this.jwtService.signAsync({ Student_ID: user.Student_ID });
     response.cookie('jwt', jwt, { httpOnly: true });
-    return {
-      message: 'success',
-    };
+    
+    return user;
   }
 
   @Get('usertoken')
