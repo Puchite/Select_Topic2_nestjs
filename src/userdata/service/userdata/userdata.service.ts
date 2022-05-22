@@ -8,6 +8,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserdataService {
+  query(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   public userdata: UserdataDto[] = [];
 
   constructor(
@@ -29,5 +32,16 @@ export class UserdataService {
     }
     
     return false;
+  }
+  async fineOne(Student_ID:any): Promise<any>{
+    const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID}`)
+    return user
+    // return await this.userdataRepository.findOne(Student_ID)
+  }
+
+  async Check(connition:any): Promise<any>{
+    // const user = await this.userdataRepository.query(`SELECT * FROM Userdata WHERE Userdata.Student_ID == ${Student_ID}`)
+    // return user
+    return await this.userdataRepository.findOne(connition)
   }
 }
