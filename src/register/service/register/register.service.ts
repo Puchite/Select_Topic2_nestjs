@@ -156,5 +156,9 @@ export class RegisterService {
                                           AND Register.Course_ID == "${Course_ID}"`);
   }
 
- 
+  HaveRegister(Student_ID) {
+    return this.RegisterRepository.query(`SELECT Register.Course_ID, Register.Grade FROM Register 
+                                          WHERE Register.Student_ID == "${Student_ID}"
+                                          AND Register.Grade > -1`);
+  }
 }

@@ -71,4 +71,9 @@ export class RegisterController {
       return this.registerService.DropCourse(Student_ID, Year, Course_ID);
   }
 
+  @Get('HaveRegister/Course/:Student_ID')
+  HaveRegister(@Param('Student_ID') Student_ID: string)
+  {
+    return this.registerService.HaveRegister(Student_ID);
+  }
 }
