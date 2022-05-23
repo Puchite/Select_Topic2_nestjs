@@ -28,6 +28,7 @@ export class CourseService {
                                         WHERE Student_ID == "${Student_ID}" 
                                         AND Course.Semester == ${Semester} 
                                         AND Course.Years == UserData.Years
+                                        OR Course.Semester == 0 
                                         ORDER BY Course.Course_Name ASC, Course.Section ASC`);
   }
 

@@ -15,7 +15,7 @@ export class RegisterService {
   ) {}
 
   Load_Register(): Promise<RegisterDto[]> {
-    return this.RegisterRepository.query('select * from Register');
+    return this.RegisterRepository.query(`select * from Register`);
   }
 
   Load_Register_Course_ID(Course_ID: string): Promise<RegisterDto[]> {
@@ -158,7 +158,6 @@ export class RegisterService {
 
   HaveRegister(Student_ID) {
     return this.RegisterRepository.query(`SELECT Register.Course_ID, Register.Grade FROM Register 
-                                          WHERE Register.Student_ID == "${Student_ID}"
-                                          AND Register.Grade > -1`);
+                                          WHERE Register.Student_ID == "${Student_ID}"`);
   }
 }
