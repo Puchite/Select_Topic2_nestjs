@@ -26,7 +26,7 @@ export class CourseController {
   }
 
   @Get(':Student_ID/:Semester')
-  Load_Course_Semester(@Param('Student_ID') Student_ID: string,@Param('Semester') Semester: number): Promise<CourseDto[]> {
+  Load_Course_Semester(@Param('Student_ID') Student_ID: string, @Param('Semester') Semester: number): Promise<CourseDto[]> {
     return this.CourseService.Load_Course_Semester(Student_ID, Semester);
   }
   
